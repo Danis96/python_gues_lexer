@@ -166,7 +166,7 @@ class GuessLexer:
                     r'println!\s*\(',
                     r'#\[derive\(',
                 ],
-                'anti_patterns': [r'def\s+\w+', r'function\s+\w+'],
+                'anti_patterns': [r'def\s+\w+', r'function\s+\w+', r'import\s+[\'"]package:', r'class\s+\w+\s+extends', r'StatelessWidget', r'StatefulWidget'],
                 'weight': 1.0
             },
             'ruby': {
@@ -211,7 +211,7 @@ class GuessLexer:
                     r'print\s*\(',
                     r'@\w+\s*\n',  # attributes
                 ],
-                'anti_patterns': [r'def\s+\w+', r'function\s+\w+'],
+                'anti_patterns': [r'def\s+\w+', r'function\s+\w+', r'import\s+[\'"]package:', r'StatelessWidget', r'StatefulWidget'],
                 'weight': 1.0
             },
             'kotlin': {
@@ -225,7 +225,7 @@ class GuessLexer:
                     r'package\s+\w+',
                     r'println\s*\(',
                 ],
-                'anti_patterns': [r'def\s+\w+', r'function\s+\w+'],
+                'anti_patterns': [r'def\s+\w+', r'function\s+\w+', r'import\s+[\'"]package:', r'StatelessWidget', r'StatefulWidget'],
                 'weight': 1.0
             },
             'sql': {
@@ -270,6 +270,37 @@ class GuessLexer:
                     r'\w+:\s*\w+;',  # property declarations
                 ],
                 'anti_patterns': [r'def\s+\w+', r'function\s+\w+', r'class\s+\w+(?!\s*\{)'],
+                'weight': 1.0
+            },
+            'dart': {
+                'keywords': ['void', 'main', 'class', 'import', 'library', 'part', 'abstract', 'extends', 'implements'],
+                'patterns': [
+                    r'void\s+main\s*\(\s*\)',  # main function
+                    r'import\s+[\'"]package:',  # package imports
+                    r'import\s+[\'"]dart:',  # dart core imports
+                    r'class\s+\w+\s+extends\s+\w+',  # class inheritance
+                    r'class\s+\w+\s+implements\s+\w+',  # interface implementation
+                    r'abstract\s+class\s+\w+',  # abstract classes
+                    r'library\s+\w+;',  # library declaration
+                    r'part\s+of\s+\w+;',  # part of library
+                    r'part\s+[\'"][^\'\"]+\.dart[\'"];',  # part files
+                    r'@override',  # override annotation
+                    r'final\s+\w+',  # final variables
+                    r'const\s+\w+',  # const variables
+                    r'var\s+\w+\s*=',  # var declarations
+                    r'\w+\?\s+\w+',  # nullable types
+                    r'\w+<\w+>',  # generics
+                    r'List<\w+>',  # List types
+                    r'Map<\w+,\s*\w+>',  # Map types
+                    r'Set<\w+>',  # Set types
+                    r'Future<\w+>',  # Future types
+                    r'Stream<\w+>',  # Stream types
+                    r'async\s*\{',  # async functions
+                    r'await\s+\w+',  # await keyword
+                    r'=>\s*\w+',  # arrow functions
+                    r'print\s*\(',  # print function
+                ],
+                'anti_patterns': [r'def\s+\w+', r'function\s+\w+', r'console\.log', r'System\.out\.println'],
                 'weight': 1.0
             }
         }
@@ -385,6 +416,83 @@ class GuessLexer:
                 ],
                 'keywords': ['@RestController', '@Service', '@Autowired', 'springframework'],
                 'weight': 1.2
+            },
+            'flutter': {
+                'language': 'dart',
+                'patterns': [
+                    r'import\s+[\'"]package:flutter/',  # Flutter package imports
+                    r'import\s+[\'"]package:flutter/material\.dart[\'"]',  # Material design
+                    r'import\s+[\'"]package:flutter/cupertino\.dart[\'"]',  # Cupertino design
+                    r'import\s+[\'"]package:flutter/widgets\.dart[\'"]',  # Base widgets
+                    r'class\s+\w+\s+extends\s+StatelessWidget',  # StatelessWidget
+                    r'class\s+\w+\s+extends\s+StatefulWidget',  # StatefulWidget
+                    r'class\s+\w+\s+extends\s+State<\w+>',  # State class
+                    r'Widget\s+build\s*\(',  # build method
+                    r'@override\s+Widget\s+build',  # override build
+                    r'MaterialApp\s*\(',  # MaterialApp
+                    r'CupertinoApp\s*\(',  # CupertinoApp
+                    r'Scaffold\s*\(',  # Scaffold widget
+                    r'AppBar\s*\(',  # AppBar widget
+                    r'Container\s*\(',  # Container widget
+                    r'Column\s*\(',  # Column widget
+                    r'Row\s*\(',  # Row widget
+                    r'Text\s*\(',  # Text widget
+                    r'RaisedButton\s*\(',  # RaisedButton (deprecated)
+                    r'ElevatedButton\s*\(',  # ElevatedButton
+                    r'TextButton\s*\(',  # TextButton
+                    r'OutlinedButton\s*\(',  # OutlinedButton
+                    r'FloatingActionButton\s*\(',  # FloatingActionButton
+                    r'ListView\s*\(',  # ListView widget
+                    r'GridView\s*\(',  # GridView widget
+                    r'Stack\s*\(',  # Stack widget
+                    r'Positioned\s*\(',  # Positioned widget
+                    r'Padding\s*\(',  # Padding widget
+                    r'Margin\s*\(',  # Margin widget
+                    r'SizedBox\s*\(',  # SizedBox widget
+                    r'Expanded\s*\(',  # Expanded widget
+                    r'Flexible\s*\(',  # Flexible widget
+                    r'Navigator\.\w+',  # Navigator methods
+                    r'setState\s*\(',  # setState method
+                    r'initState\s*\(',  # initState method
+                    r'dispose\s*\(',  # dispose method
+                    r'didChangeDependencies\s*\(',  # lifecycle method
+                    r'runApp\s*\(',  # runApp function
+                    r'MaterialPageRoute\s*\(',  # MaterialPageRoute
+                    r'CupertinoPageRoute\s*\(',  # CupertinoPageRoute
+                    r'Theme\.\w+',  # Theme usage
+                    r'MediaQuery\.\w+',  # MediaQuery usage
+                    r'ValueNotifier<\w+>',  # ValueNotifier
+                    r'ValueListenableBuilder<\w+>',  # ValueListenableBuilder
+                    r'StreamBuilder<\w+>',  # StreamBuilder
+                    r'FutureBuilder<\w+>',  # FutureBuilder
+                    r'AnimationController\s*\(',  # AnimationController
+                    r'SingleTickerProviderStateMixin',  # Animation mixin
+                    r'TickerProviderStateMixin',  # Animation mixin
+                    r'GestureDetector\s*\(',  # GestureDetector
+                    r'InkWell\s*\(',  # InkWell
+                    r'onTap:\s*\(',  # onTap callback
+                    r'onPressed:\s*\(',  # onPressed callback
+                    r'CrossAxisAlignment\.\w+',  # CrossAxisAlignment
+                    r'MainAxisAlignment\.\w+',  # MainAxisAlignment
+                    r'TextAlign\.\w+',  # TextAlign
+                    r'FontWeight\.\w+',  # FontWeight
+                    r'Colors\.\w+',  # Colors
+                    r'Icons\.\w+',  # Icons
+                    r'EdgeInsets\.\w+',  # EdgeInsets
+                    r'BorderRadius\.\w+',  # BorderRadius
+                    r'Decoration\s*\(',  # BoxDecoration
+                    r'BoxDecoration\s*\(',  # BoxDecoration
+                ],
+                'keywords': [
+                    'Flutter', 'StatelessWidget', 'StatefulWidget', 'Widget', 'build',
+                    'MaterialApp', 'CupertinoApp', 'Scaffold', 'AppBar', 'Container',
+                    'Column', 'Row', 'Text', 'ElevatedButton', 'FloatingActionButton',
+                    'ListView', 'GridView', 'Stack', 'Positioned', 'Navigator',
+                    'setState', 'initState', 'dispose', 'runApp', 'Theme', 'MediaQuery',
+                    'StreamBuilder', 'FutureBuilder', 'AnimationController', 'GestureDetector',
+                    'CrossAxisAlignment', 'MainAxisAlignment', 'Colors', 'Icons'
+                ],
+                'weight': 1.3
             }
         }
     
@@ -406,7 +514,8 @@ class GuessLexer:
             'kotlin': ['.kt', '.kts'],
             'sql': ['.sql'],
             'html': ['.html', '.htm'],
-            'css': ['.css']
+            'css': ['.css'],
+            'dart': ['.dart']
         }
     
     def analyze_code(self, code: str, filename: Optional[str] = None) -> DetectionResult:
