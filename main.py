@@ -48,7 +48,7 @@ def print_banner():
 {Fore.MAGENTA}{Style.BRIGHT}
 ╔══════════════════════════════════════════════════════════════╗
 ║                                                              ║
-║          🎯 DANIS'S POWERFUL GUESS LEXER 🎯            ║
+║          🎯 DANIS'S POWERFUL GUESS LEXER 🎯                  ║
 ║                                                              ║
 ║              Advanced Code Language Detection Engine         ║
 ║                                                              ║
