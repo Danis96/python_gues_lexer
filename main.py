@@ -164,7 +164,7 @@ def scan(directory: str, recursive: bool, json_output: bool, min_confidence: flo
     
     # Common code file extensions if none specified
     if not extensions:
-        extensions = ['.py', '.js', '.ts', '.java', '.cpp', '.c', '.go', '.rs', '.rb', '.php', '.swift', '.kt', '.sql', '.html', '.css']
+        extensions = ['.py', '.js', '.ts', '.java', '.cpp', '.c', '.go', '.rs', '.rb', '.php', '.swift', '.kt', '.sql', '.html', '.css', '.dart']
     
     # Scan files
     files_found = 0
