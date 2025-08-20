@@ -1500,4 +1500,5 @@ python main.py scan /path/to/project -r --json-output | \
 
 ---
 
-This comprehensive documentation covers all aspects of Danis's Powerful Guess Lexer, from basic installation to advanced customization and integration scenarios. The engine is designed to be both powerful out-of-the-box and highly extensible for specific use cases.
+This comprehensive documentation covers all aspects of Danis's Powerful Guess Lexer, from basic installation to advanced customization and integration scenarios. 
+The engine is designed to be both powerful out-of-the-box and highly extensible for specific use cases.
