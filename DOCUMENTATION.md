@@ -16,7 +16,8 @@
 
 ## Overview
 
-Danis's Powerful Guess Lexer is an advanced code language and framework detection engine built in Python. It uses sophisticated pattern matching, lexical analysis, and machine learning-inspired scoring algorithms to accurately identify programming languages and frameworks from source code.
+Danis's Powerful Guess Lexer is an advanced code language and framework detection engine built in Python. 
+It uses sophisticated pattern matching, lexical analysis, and machine learning-inspired scoring algorithms to accurately identify programming languages and frameworks from source code.
 
 ### Key Features
 - **15+ Programming Languages**: Python, JavaScript, TypeScript, Java, C#, C++, C, Go, Rust, Ruby, PHP, Swift, Kotlin, SQL, HTML, CSS
